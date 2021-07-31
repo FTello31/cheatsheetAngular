@@ -31,6 +31,7 @@ export class TableRowButtonsComponent implements OnInit, AfterViewInit {
 
 
   products$: Observable<MaPartida[]>;
+  // https://wilderperozo.medium.com/5-sencillos-tips-and-tricks-cuando-usas-async-pipe-en-angular-fa4580000694
 
   constructor(public dialog: MatDialog,
     private restAsyncService: RxjsWayService,
