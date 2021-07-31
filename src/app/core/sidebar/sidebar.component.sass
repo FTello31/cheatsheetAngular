@@ -1,2 +1,44 @@
+@import "../../../styles/_variables.sass"
+
+:host ::ng-deep .white > .mat-expansion-indicator:after
+    color: white
+
 .logo-img
     width: 100%
+
+.divider
+    content: ''
+    position: relative
+    height: 1px
+    left: 15px
+    width: calc(100% - 30px)
+    background-color: white
+
+.sidebar-menu
+    flex-direction: row
+    box-sizing: border-box
+    display: flex
+    place-content: center space-between
+    align-items: center
+
+.mr10
+    margin-right: 10px
+
+.example-sidenav-container
+    background-color: $sidebar-color
+    position: sticky
+
+    .mat-nav-list
+
+        ::ng-deep .mat-list-item-content
+            color: white
+
+        .mat-expansion-panel-header
+            background-color: $sidebar-color
+
+        &-title, .mat-expansion-panel-header-description
+            color: white
+
+        ::ng-deep .mat-expansion-panel-body
+            background-color: $sidebar-color
+            color: white

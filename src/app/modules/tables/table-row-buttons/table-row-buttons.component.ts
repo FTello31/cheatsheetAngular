@@ -5,8 +5,11 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Observable } from 'rxjs';
 import { MaPartida } from 'src/app/models/ma-partida.model';
 import { TablesService } from 'src/app/services/tables.service';
+import { RxjsWayService } from 'src/app/services/rxjs-way.service';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-table-row-buttons',
@@ -26,15 +29,21 @@ export class TableRowButtonsComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
+
+  products$: Observable<MaPartida[]>;
+
   constructor(public dialog: MatDialog,
-    private restPartidaService: TablesService,
+    private restAsyncService: RxjsWayService,
     public snackBar: MatSnackBar) {
 
     this.dataSourceEscenarios = new MatTableDataSource<MaPartida>();
   }
 
   ngOnInit(): void {
-    this.getPartidas();
+    this.restAsyncService.getPartidas(1).subscribe(products => {
+      this.dataSourceEscenarios.data = products;
+    });
+    // this.products$.subscribe(data => console.log(data));
   }
 
   ngAfterViewInit() {
@@ -42,20 +51,7 @@ export class TableRowButtonsComponent implements OnInit, AfterViewInit {
     this.dataSourceEscenarios.sort = this.sort;
   }
 
-  getPartidas() {
-    this.hasLoaded = false;
-    this.restPartidaService.getPartidas(1).subscribe(partidas => {
-      this.hasLoaded = true;
 
-      this.escenarios = partidas;
-      this.dataSourceEscenarios.data = partidas;
-    },
-      error => {
-        this.snackBar.open(`(${error.status}):
-        ${error.message}`, 'X', { duration: 10000 });
-      }
-    );
-  }
 
   clickBotonEditar(entidadSeleccionada: MaPartida): void {
     console.log("edit " + entidadSeleccionada.nombre);

@@ -16,7 +16,7 @@
             <mat-expansion-panel-header class="white">
               <mat-panel-title>
                 <!-- Cabeceras del submenu -->
-                <div fxLayout="row" fxLayoutAlign="space-between center">
+                <div class="sidebar-menu">
                   <mat-icon class="mr10">{{menuItem.icon}}</mat-icon>
                   {{menuItem.title}}
                 </div>
@@ -25,7 +25,7 @@
             <span *ngFor="let child of menuItem.children">
               <mat-list-item [routerLink]="[child.path]">
                 <!-- Entradas de cada submenú  -->
-                <div fxLayout="row" fxLayoutAlign="space-between center">
+                <div class="sidebar-menu">
                   {{child.title}}
                 </div>
               </mat-list-item>
@@ -36,7 +36,7 @@
       <span *ngIf="menuItem.children === null">
         <mat-list-item [routerLink]="[menuItem.path]">
           <!-- Entradas principales -->
-          <div fxLayout="row" fxLayoutAlign="space-between center">
+          <div class="sidebar-menu">
             <mat-icon class="mr10">{{menuItem.icon}}</mat-icon>
             {{menuItem.title}}
           </div>

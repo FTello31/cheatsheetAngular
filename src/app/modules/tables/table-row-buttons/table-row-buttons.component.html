@@ -1,7 +1,8 @@
-<h1> Table edit delete in rows</h1>
+<h1> Table edit delete in rows - Async pipe way </h1>
 
 
 <div class="containerMatTable">
+    <!-- <table mat-table [dataSource]="products$ | async" matSort> -->
     <table mat-table [dataSource]="dataSourceEscenarios" matSort>
 
         <ng-container matColumnDef="nombre">

@@ -8,7 +8,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'cheetsheetAngular';
+  title = 'cheatsheetAngular';
 
 
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {

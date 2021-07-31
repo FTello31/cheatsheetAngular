@@ -32,13 +32,10 @@ export class TablesService {
   }
 
   getPartidas(repartoTipo: number): Observable<MaPartida[]> {
-    console.log("hola");
-    console.log(this.urlJsonServer);
-    console.log(this.urlRest);
-    console.log(this.url);
-    return this.http.get<MaPartida[]>(`${this.urlJsonServer}${this.urlRest}/${repartoTipo}`, httpOptions).pipe(
-      catchError(this.handleError)
-    );
+    return this.http.get<MaPartida[]>(`${this.urlJsonServer}${this.urlRest}/${repartoTipo}`, httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
   getPartidasNotInMov(repartoTipo: number, periodo: number): Observable<MaPartida[]> {
@@ -54,9 +51,10 @@ export class TablesService {
   }
 
   updatePartida(nuevaPartida: MaPartida): any {
-    return this.http.put(`${this.urlJsonServer}${this.urlRest}`, nuevaPartida, httpOptions).pipe(
-      catchError(this.handleError)
-    );
+    return this.http.put(`${this.urlJsonServer}${this.urlRest}`, nuevaPartida, httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
   deletePartida(nuevaPartida: MaPartida): any {

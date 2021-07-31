@@ -1,4 +1,4 @@
-# CheetsheetAngular
+# cheatsheetAngular
 
 cheetsheet angular, all component from my projects.
 Angular Material

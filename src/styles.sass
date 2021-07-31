@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./styles/_variables.sass"
+
 /* table */
 .table-responsive
     border: none
@@ -15,9 +17,9 @@
     thead > tr > th
         font-size: 1.25em
         font-weight: 450
-        color: #09c
+        color: $table-head-color
         border-bottom-width: 1px
-        border-bottom-color: #09c!important
+        border-bottom-color: $table-head-color!important
         padding: 5px 5px
 
     tbody > tr > td
