@@ -1,0 +1,20 @@
+<div class="header">
+    <button mat-dialog-close mat-icon-button color="accent">
+        <mat-icon color="warn">close</mat-icon>
+    </button>
+    <h4 mat-dialog-title>{{ title }}</h4>
+</div>
+
+<mat-dialog-content>
+    <p [innerHTML]="msgConfirmation"></p>
+</mat-dialog-content>
+
+<div class="botonCentro">
+    <mat-dialog-actions>
+        <button mat-stroked-button color="warn" (click)="dialogRef.close(false)"
+            i18n="@@dialogo-confirmar-borrado_cancelar">No, volver</button>
+        <button mat-raised-button (click)="dialogRef.close(true)" color="warn"
+            i18n="@@dialogo-confirmar-borrado_borrar">S&iacute;,
+            estoy seguro</button>
+    </mat-dialog-actions>
+</div>

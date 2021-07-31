@@ -1,0 +1,52 @@
+<div class="header">
+    <h2 mat-dialog-title>{{tittle}}</h2>
+    <button (click)="onCancel()" mat-icon-button color="accent">
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+<!-- <form [formGroup]="UserForm"> -->
+<mat-dialog-content>
+    <mat-form-field>
+        <input matInput placeholder="Name" formControlName="name" autofocus required>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="Email" formControlName="email" required>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="Department" formControlName="department" required>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="user_password"
+            required>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <mat-radio-group class="example-radio-group" formControlName="admin" required>Admin
+        <mat-radio-button class="example-radio-button" [value]="'1'">Si</mat-radio-button>
+        <mat-radio-button class="example-radio-button" [value]="'0'">No</mat-radio-button>
+    </mat-radio-group>
+
+    <mat-form-field required>
+        <mat-label>Language</mat-label>
+        <mat-select formControlName="id_UserLanguage">
+            <mat-option [value]=1>English</mat-option>
+            <mat-option [value]=2>Portuguese</mat-option>
+            <mat-option [value]=3>Spanish</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+
+</mat-dialog-content>
+
+<mat-dialog-actions class="botonCentro" *ngIf="!disabled">
+    <button mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="UserForm.value"
+        [disabled]="!UserForm.valid">Save</button>
+</mat-dialog-actions>
+<!-- </form> -->

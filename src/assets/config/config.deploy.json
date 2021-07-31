@@ -1,0 +1,7 @@
+{
+    "apiServer": {
+        "protocol": "https://",
+        "host": "apimgmt-pacificodesa.azure-api.net/",
+        "app": "UX-Envio-Parametria-PGA/v1"
+    }
+}

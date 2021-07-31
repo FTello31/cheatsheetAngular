@@ -1,0 +1,75 @@
+<h1> Table select check - search responsive</h1>
+
+<div class="buscarInput">
+    <mat-icon class="buscarIcon" matSufix aria-hidden="false" aria-label="Search">search</mat-icon>&nbsp;
+    <mat-form-field>
+        <input matInput (keyup)="applyFilter2($event.target.value)" placeholder="Search" #input>
+    </mat-form-field>
+</div>
+
+
+<div class="containerMatTable">
+    <table mat-table [dataSource]="dataSourceEscenarios" matSort>
+
+        <!-- Checkbox Column -->
+        <ng-container matColumnDef="select">
+            <th mat-header-cell *matHeaderCellDef>
+                <mat-checkbox (change)="$event ? masterToggle() : null"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+                </mat-checkbox>
+            </th>
+            <td mat-cell *matCellDef="let row">
+                <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null;"
+                    [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+                </mat-checkbox>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef>
+                <span mat-sort-header i18n="@@conf-escenario_columnaNombre"> Nombre </span>
+            </th>
+            <td mat-cell *matCellDef="let escenario"> {{escenario.nombre}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="grupoGasto">
+            <th mat-header-cell *matHeaderCellDef>
+                <span mat-sort-header i18n="@@conf-escenario_columnaNombreVariableMotor"> grupoGasto </span>
+            </th>
+            <td mat-cell *matCellDef="let escenario"> {{escenario.grupoGasto}}</td>
+        </ng-container>
+
+        <!-- <ng-container matColumnDef="editar">
+            <th mat-header-cell *matHeaderCellDef i18n="@@conf-escenario_columnaEditar"> Editar </th>
+            <td mat-cell *matCellDef="let escenario">
+                <button mat-icon-button
+                    [disabled]="escenario.id_escenario==1 || escenario.id_escenario==2 || escenario.id_escenario==3"
+                    (click)="clickBotonEditar(escenario)">
+                    <mat-icon svgIcon="editar"></mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="borrar">
+            <th mat-header-cell *matHeaderCellDef i18n="@@conf-escenario_columnaBorrar"> Borrar </th>
+            <td mat-cell *matCellDef="let escenario">
+                <button mat-icon-button
+                    [disabled]="escenario.id_escenario==1 || escenario.id_escenario==2 || escenario.id_escenario==3"
+                    (click)="clickBotonBorrar(escenario)">
+                    <mat-icon svgIcon="borrar"></mat-icon>
+                </button>
+            </td>
+        </ng-container> -->
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+            [ngStyle]="{'pointer-events': row.flag_obligatorio ? 'none' : 'all'}"></tr>
+        <!-- (click)="clickBotonEditar(row)" -->
+    </table>
+    <div class="mat-table-no-items"
+        *ngIf="!(dataSourceEscenarios.filteredData?.length > 0) && (dataSourceEscenarios.data?.length > 0) ">No se
+        encontraron registros para el filtro "{{input.value}}"</div>
+    <div class="mat-table-no-items" *ngIf="!(dataSourceEscenarios.data?.length > 0)">No se encontraron registros</div>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

@@ -1,0 +1,51 @@
+<div class="logo text-uppercase" [style.color]="normalFontColor">
+  <img src="../../assets/img/logo.png" class="text-center logo-img" alt="logo" />
+</div>
+<div class="divider"></div><br />
+
+<mat-sidenav-container class="example-sidenav-container">
+
+  <!-- <mat-sidenav [mode]="'side'"> -->
+
+  <mat-nav-list>
+    <span *ngFor="let menuItem of menuItems">
+      <!-- <span *ngIf="hasPermissions(menuItem.permisoRequerido)"> -->
+      <span *ngIf="menuItem.children !== null">
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header class="white">
+              <mat-panel-title>
+                <!-- Cabeceras del submenu -->
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                  <mat-icon class="mr10">{{menuItem.icon}}</mat-icon>
+                  {{menuItem.title}}
+                </div>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <span *ngFor="let child of menuItem.children">
+              <mat-list-item [routerLink]="[child.path]">
+                <!-- Entradas de cada submenú  -->
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                  {{child.title}}
+                </div>
+              </mat-list-item>
+            </span>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </span>
+      <span *ngIf="menuItem.children === null">
+        <mat-list-item [routerLink]="[menuItem.path]">
+          <!-- Entradas principales -->
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <mat-icon class="mr10">{{menuItem.icon}}</mat-icon>
+            {{menuItem.title}}
+          </div>
+        </mat-list-item>
+      </span>
+      <!-- </span> -->
+
+    </span>
+  </mat-nav-list>
+  <!-- </mat-sidenav> -->
+
+</mat-sidenav-container>

@@ -1,0 +1,28 @@
+<div class="headerDetalle">
+    <button mat-dialog-close mat-icon-button color="accent">
+        <mat-icon color="primary">close</mat-icon>
+    </button>
+    <h4 mat-dialog-title i18n="@@dialogo-ver-reporte_tituloDetalleCambios">Resumen</h4>
+</div>
+
+<div [style.overflow]="'auto'" [style.height.px]="'400'">
+    <!-- <div *ngFor="let logEsc of data.logsEscenario"> -->
+    <div *ngFor="let logEsc of logsEscenario">
+
+        <mat-card>
+            <mat-card-header>
+                <mat-card-subtitle [style.font-weight]="'bold'" i18n="@@dialogo-ver-reporte_versionesCargaTablas">
+                    Escenario: {{logEsc | uppercase }}
+                </mat-card-subtitle>
+            </mat-card-header>
+
+
+            <!-- <mat-card-content [style.width]="'100%'">
+                <app-escenarios-ver-resumen [tablasEscenarios]="logEsc.verResumen">
+                </app-escenarios-ver-resumen>
+
+            </mat-card-content> -->
+        </mat-card>
+        <br>
+    </div>
+</div>

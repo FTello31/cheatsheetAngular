@@ -1,6 +1,9 @@
 # CheetsheetAngular
 
-cheetsheet angular, all component from my projects 
+cheetsheet angular, all component from my projects.
+Angular Material
+
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.5.
 
