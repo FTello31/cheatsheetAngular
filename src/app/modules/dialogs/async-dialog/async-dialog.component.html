@@ -2,7 +2,7 @@
     <button mat-dialog-close mat-icon-button color="accent">
         <mat-icon color="primary">close</mat-icon>
     </button>
-    <h4 mat-dialog-title i18n="@@dialogo-ver-reporte_tituloDetalleCambios">Resumen</h4>
+    <h4 mat-dialog-title i18n="@@dialogo-ver-reporte_tituloDetalleCambios">Async Dialog</h4>
 </div>
 
 <div [style.overflow]="'auto'" [style.height.px]="'400'">
@@ -12,7 +12,7 @@
         <mat-card>
             <mat-card-header>
                 <mat-card-subtitle [style.font-weight]="'bold'" i18n="@@dialogo-ver-reporte_versionesCargaTablas">
-                    Escenario: {{logEsc | uppercase }}
+                    Numero: {{logEsc | uppercase }}
                 </mat-card-subtitle>
             </mat-card-header>
 

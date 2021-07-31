@@ -1,12 +1,16 @@
 import { SelectionModel } from '@angular/cdk/collections';
 import { AfterViewInit, Component, OnDestroy, OnInit, QueryList, ViewChildren } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+
 import { MaPartida } from '../../models/ma-partida.model';
 import { TablesService } from '../../services/tables.service';
+import { SyncDialogComponent } from '../dialogs/sync-dialog/sync-dialog.component';
+
+import { utils, WorkBook, WorkSheet, writeFile } from 'xlsx';
 
 @Component({
   selector: 'app-tables',
@@ -21,22 +25,21 @@ export class TablesComponent implements OnInit, AfterViewInit, OnDestroy {
 
   partidaSeleccionada: MaPartida;
   selectedRowIndex: string;
-  isActivePartida: boolean;
+  isActive: boolean;
 
   hasLoaded: boolean = false;
-  repartoTipo: number;
 
   dsMaPartidas: MatTableDataSource<MaPartida>;
   dcMaPartidas: string[] = ['codPartida', 'nombre', 'grupoGasto', 'tipoGasto'];
   partidas: MaPartida[];
 
+  fileName: string = 'Partidas - Catalogo';
 
 
   constructor(public dialog: MatDialog,
     private restPartidaService: TablesService,
     public snackBar: MatSnackBar) {
     this.dsMaPartidas = new MatTableDataSource<MaPartida>();
-    this.repartoTipo = 1;
     this.restart();
   }
 
@@ -59,7 +62,7 @@ export class TablesComponent implements OnInit, AfterViewInit, OnDestroy {
 
   getPartidas() {
     this.hasLoaded = false;
-    this.restPartidaService.getPartidas(this.repartoTipo).subscribe(partidas => {
+    this.restPartidaService.getPartidas(1).subscribe(partidas => {
       this.hasLoaded = true;
       this.partidas = partidas;
       this.dsMaPartidas.data = partidas;
@@ -74,15 +77,73 @@ export class TablesComponent implements OnInit, AfterViewInit, OnDestroy {
 
   restart() {
     this.partidaSeleccionada = null;
-    this.isActivePartida = false;
+    this.isActive = false;
     this.selectedRowIndex = null;
   }
 
   clickablePartidaRow(partida: MaPartida) {
     this.partidaSeleccionada = partida;
     this.selectedRowIndex = partida.codPartida;
-    this.isActivePartida = true;
+    this.isActive = true;
   }
+
+  openCreateDialog() {
+    // this.dialogoCrear = this.dialog.open(PartidasMaestroCrearDialogComponent, { disableClose: false });
+    // this.dialogoCrear.afterClosed().subscribe(result => {
+    //   this.getPartidas();
+    //   this.dialogoCrear = null;
+    // });
+    console.log("create");
+
+  }
+
+  openEditDialog() {
+    console.log("edit");
+
+    if (Object.keys(this.partidaSeleccionada).length !== 0) {
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.disableClose = false;
+      dialogConfig.autoFocus = false;
+      dialogConfig.minWidth = 300;
+      dialogConfig.data = {
+        partida: this.partidaSeleccionada
+      };
+
+      const dialogRef = this.dialog.open(SyncDialogComponent, dialogConfig);
+      dialogRef.afterClosed().subscribe(result => {
+        this.getPartidas();
+      });
+
+    }
+    this.restart();
+  }
+
+  openDeleteDialog() {
+    console.log("delete");
+  }
+
+  downloadTable() {
+    //npm install xlsx --save
+    /* ID TABLA */
+    let headers = ['CODIGO', 'NOMBRE', 'GRUPO GASTO', 'TIPO GASTO'];
+    let newArray = this.dsMaPartidas.filteredData.map(({ codPartida, nombre, grupoGasto, tipoGasto }
+    ) => ({ codPartida, nombre, grupoGasto, tipoGasto: tipoGasto == 1 ? '1' : '0' }));
+
+    /* GENERAR WORKBOOK Y AÑADIR WORKSHEET */
+    let ws: WorkSheet = utils.json_to_sheet(newArray);
+    if (ws.A1 != undefined) {
+      ws.A1.v = headers[0];
+      ws.B1.v = headers[1];
+      ws.C1.v = headers[2];
+      ws.D1.v = headers[3];
+    }
+    const wb: WorkBook = utils.book_new();
+    utils.book_append_sheet(wb, ws, 'CATALOGO'); // tab name
+
+    /* GRABAR ARCHIVO */
+    writeFile(wb, this.fileName + ' - ' + new Date().toLocaleString() + '.xlsx');
+  }
+
 
 
   applyFilter(filterValue: string) {

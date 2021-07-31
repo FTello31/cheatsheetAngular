@@ -1,4 +1,5 @@
 import { Component, ElementRef, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -8,7 +9,7 @@ import { MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/materia
 })
 export class SyncDialogComponent implements OnInit, OnDestroy {
 
-  // UserForm: FormGroup;
+  UserForm: FormGroup;
   tittle: string;
   hide: boolean;
   disabled = false;
@@ -24,15 +25,15 @@ export class SyncDialogComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
-    // this.UserForm = new FormGroup({
-    //   // 'id_User': new FormControl(''),
-    //   'name': new FormControl('', [Validators.required]),
-    //   'email': new FormControl('', [Validators.required, Validators.email]),
-    //   'department': new FormControl('', [Validators.required]),
-    //   'user_password': new FormControl('', [Validators.required]),
-    //   'admin': new FormControl('', [Validators.required]),
-    //   'id_UserLanguage': new FormControl('', [Validators.required])
-    // });
+    this.UserForm = new FormGroup({
+      // 'id_User': new FormControl(''),
+      'name': new FormControl('', [Validators.required]),
+      'email': new FormControl('', [Validators.required, Validators.email]),
+      'department': new FormControl('', [Validators.required]),
+      'user_password': new FormControl('', [Validators.required]),
+      'admin': new FormControl('', [Validators.required]),
+      'id_UserLanguage': new FormControl('', [Validators.required])
+    });
   }
 
   onCancel() {
@@ -40,7 +41,7 @@ export class SyncDialogComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    // this.UserForm.reset();
+    this.UserForm.reset();
   }
 
 

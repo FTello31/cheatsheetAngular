@@ -1,4 +1,19 @@
-<h1> Table select check - search responsive</h1>
+<h1> Table select check - icons downloaded</h1>
+
+
+<div class="buttons-title">
+    <button class="button-title" mat-flat-button color="accent" (click)="clickButtonNew()"
+        i18n="@@conf-escenario_crearCorreo">
+        <mat-icon aria-hidden="false" aria-label="New Escenario" svgIcon="add_box"></mat-icon>
+        New
+    </button>
+    <button class="button-title" mat-flat-button color="accent" (click)="clickButtonDelete()"
+        [disabled]="!selection.hasValue()" i18n="@@conf-escenario_columnaEliminar">
+        <mat-icon aria-hidden="false" aria-label="Eliminar Escenario" svgIcon="delete"></mat-icon>
+        Delete
+    </button>
+</div>
+
 
 <div class="buscarInput">
     <mat-icon class="buscarIcon" matSufix aria-hidden="false" aria-label="Search">search</mat-icon>&nbsp;
@@ -40,32 +55,10 @@
             <td mat-cell *matCellDef="let escenario"> {{escenario.grupoGasto}}</td>
         </ng-container>
 
-        <!-- <ng-container matColumnDef="editar">
-            <th mat-header-cell *matHeaderCellDef i18n="@@conf-escenario_columnaEditar"> Editar </th>
-            <td mat-cell *matCellDef="let escenario">
-                <button mat-icon-button
-                    [disabled]="escenario.id_escenario==1 || escenario.id_escenario==2 || escenario.id_escenario==3"
-                    (click)="clickBotonEditar(escenario)">
-                    <mat-icon svgIcon="editar"></mat-icon>
-                </button>
-            </td>
-        </ng-container>
-
-        <ng-container matColumnDef="borrar">
-            <th mat-header-cell *matHeaderCellDef i18n="@@conf-escenario_columnaBorrar"> Borrar </th>
-            <td mat-cell *matCellDef="let escenario">
-                <button mat-icon-button
-                    [disabled]="escenario.id_escenario==1 || escenario.id_escenario==2 || escenario.id_escenario==3"
-                    (click)="clickBotonBorrar(escenario)">
-                    <mat-icon svgIcon="borrar"></mat-icon>
-                </button>
-            </td>
-        </ng-container> -->
-
         <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"
-            [ngStyle]="{'pointer-events': row.flag_obligatorio ? 'none' : 'all'}"></tr>
-        <!-- (click)="clickBotonEditar(row)" -->
+            [ngStyle]="{'pointer-events': row.flag_obligatorio ? 'none' : 'all'}" (click)="clickButtonEdit(row)"></tr>
+
     </table>
     <div class="mat-table-no-items"
         *ngIf="!(dataSourceEscenarios.filteredData?.length > 0) && (dataSourceEscenarios.data?.length > 0) ">No se

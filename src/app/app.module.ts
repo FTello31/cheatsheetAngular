@@ -20,6 +20,7 @@ import { DialogsComponent } from './modules/dialogs/dialogs.component';
 import { DialogConfirmDeleteComponent } from './shared/dialog-confirm-delete/dialog-confirm-delete.component';
 import { SyncDialogComponent } from './modules/dialogs/sync-dialog/sync-dialog.component';
 import { AsyncDialogComponent } from './modules/dialogs/async-dialog/async-dialog.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 export function initializeApp(appConfig: AppConfig) {
@@ -50,7 +51,9 @@ const DialogComponents = [
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     AppConfig,
