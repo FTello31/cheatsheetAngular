@@ -8,8 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
-import { MaterialModule } from './material.module';
-import { SidebarComponent } from './core/sidebar/sidebar.component';
+import { MaterialModule } from './app-material.module';
+import { SidebarComponent } from './core-modules/sidebar/sidebar.component';
 import { HomeComponent } from './modules/home/home.component';
 import { TablesComponent } from './modules/tables/tables.component';
 
@@ -21,6 +21,11 @@ import { DialogConfirmDeleteComponent } from './shared/dialog-confirm-delete/dia
 import { SyncDialogComponent } from './modules/dialogs/sync-dialog/sync-dialog.component';
 import { AsyncDialogComponent } from './modules/dialogs/async-dialog/async-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FooterComponent } from './core-modules/footer/footer.component';
+import { HeaderComponent } from './core-modules/header/header.component';
+import { LoginComponent } from './core-modules/login/login.component';
+import { ParentSecureComponent } from './core-modules/parent-secure/parent-secure.component';
+
 
 
 export function initializeApp(appConfig: AppConfig) {
@@ -44,7 +49,11 @@ const DialogComponents = [
     DialogsComponent,
     DialogConfirmDeleteComponent,
     SyncDialogComponent,
-    AsyncDialogComponent
+    AsyncDialogComponent,
+    FooterComponent,
+    HeaderComponent,
+    LoginComponent,
+    ParentSecureComponent
   ],
   imports: [
     BrowserModule,

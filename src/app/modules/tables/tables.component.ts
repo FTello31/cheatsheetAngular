@@ -144,8 +144,6 @@ export class TablesComponent implements OnInit, AfterViewInit, OnDestroy {
     writeFile(wb, this.fileName + ' - ' + new Date().toLocaleString() + '.xlsx');
   }
 
-
-
   applyFilter(filterValue: string) {
     this.dsMaPartidas.filter = filterValue.trim().toLowerCase();
 
@@ -157,7 +155,6 @@ export class TablesComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     // this.subscribeUpload?.unsubscribe();
-
   }
 
 }

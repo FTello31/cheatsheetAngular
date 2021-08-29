@@ -1,0 +1,7 @@
+{
+    "apiServer": {
+        "protocol": "https://",
+        "host": "shielded-forest-05333.herokuapp.com",
+        "app": ""
+    }
+}
