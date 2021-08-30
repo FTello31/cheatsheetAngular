@@ -4,45 +4,25 @@ import { LoginComponent } from './core-modules/login/login.component';
 import { ParentSecureComponent } from './core-modules/parent-secure/parent-secure.component';
 import { DialogsComponent } from './modules/dialogs/dialogs.component';
 import { HomeComponent } from './modules/home/home.component';
-import { TablesComponent } from './modules/tables/tables.component';
+import { TablesComponent } from './modules/tables-container/tables.component';
+import { AuthGuard } from './shared/_guard/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-
   {
-    path: '', canActivate: [AuthGuard], component: ParentSecureComponent,
+    path: '', canActivate: [AuthGuard], canActivateChild: [AuthGuard], component: ParentSecureComponent,
     children: [
       // { path: 'inicio',canActivate: [AuthGuard,PermisionGuard], data: {permisoRequerido: 'mnuInicio'}, component: InicioComponent },
       // { path: 'parametrizacion/cuentas-contables',canActivate: [AuthGuard,PermisionGuard], data: {permisoRequerido: 'mnuParametrizacion'}, component: CuentasContablesPeriodoListarComponent }
       { path: '', redirectTo: '/home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },
-      { path: 'tables', component: TablesComponent },
-      { path: 'dialogs', component: DialogsComponent },
-
+      // { path: 'tables', component: TablesComponent },
+      { path: 'tables', loadChildren: () => import('./modules/tables-container/tables.module').then(m => m.TablesModule) },
+      { path: 'dialogs', loadChildren: () => import('./modules/dialogs/dialogs.module').then(m => m.DialogsModule) },
     ]
-  },
-
-
-  // ibk
-  // {
-  //   path: '', canActivate: [AutenticacionGuard], component: NavbarComponent,
-  //   children: [
-
-  //     {
-  //       path: 'inicio', component: PaginaInicioComponent,
-  //       canActivate: [AutenticacionGuard],
-  //       data: { permisosRequeridos: [] }
-  //     },
-  //   ]
-  // }
-
-
+  }
 ];
-
-
-
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

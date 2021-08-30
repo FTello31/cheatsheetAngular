@@ -11,11 +11,11 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MaterialModule } from './app-material.module';
 import { SidebarComponent } from './core-modules/sidebar/sidebar.component';
 import { HomeComponent } from './modules/home/home.component';
-import { TablesComponent } from './modules/tables/tables.component';
+import { TablesComponent } from './modules/tables-container/tables.component';
 
 import { AppConfig } from './services/config/app.config';
-import { TableCheckComponent } from './modules/tables/table-check/table-check.component';
-import { TableRowButtonsComponent } from './modules/tables/table-row-buttons/table-row-buttons.component';
+import { TableCheckComponent } from './modules/tables-container/table-check/table-check.component';
+import { TableRowButtonsComponent } from './modules/tables-container/table-row-buttons/table-row-buttons.component';
 import { DialogsComponent } from './modules/dialogs/dialogs.component';
 import { DialogConfirmDeleteComponent } from './shared/dialog-confirm-delete/dialog-confirm-delete.component';
 import { SyncDialogComponent } from './modules/dialogs/sync-dialog/sync-dialog.component';
@@ -43,18 +43,14 @@ const DialogComponents = [
     AppComponent,
     SidebarComponent,
     HomeComponent,
-    TablesComponent,
-    TableCheckComponent,
-    TableRowButtonsComponent,
     DialogsComponent,
     DialogConfirmDeleteComponent,
-    SyncDialogComponent,
-    AsyncDialogComponent,
     FooterComponent,
     HeaderComponent,
     LoginComponent,
     ParentSecureComponent
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,

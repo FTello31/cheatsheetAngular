@@ -1,7 +1,7 @@
 {
-    "apiServer": {
-        "protocol": "https://",
-        "host": "apimgmt-pacificodesa.azure-api.net/",
-        "app": "UX-Envio-Parametria-PGA/v1"
-    }
+  "apiServer": {
+    "protocol": "https://",
+    "host": "shielded-forest-05333.herokuapp.com",
+    "app": ""
+  }
 }

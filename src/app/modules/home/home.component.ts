@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // ! method deprecated 
+  // ! ERROR method deprecated 
   // * IMPORTANT
   // TODO fwefkwep
   // ? question
