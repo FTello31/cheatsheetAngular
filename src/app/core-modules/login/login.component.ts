@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   // private initiate_login_sub!: Subscription;
 
   constructor(
+    private router: Router
     // private global_utilities: AppUtilityService
   ) { }
 
@@ -25,6 +27,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   initiateLogin() {
+    this.router.navigate(['/home']);
     // this.initiate_login_sub = this.global_utilities.login(this.login_form.value).subscribe(
     //   (data)=>{
     //     this.global_utilities.navigateToURL('/secure');

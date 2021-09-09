@@ -25,6 +25,9 @@ import { FooterComponent } from './core-modules/footer/footer.component';
 import { HeaderComponent } from './core-modules/header/header.component';
 import { LoginComponent } from './core-modules/login/login.component';
 import { ParentSecureComponent } from './core-modules/parent-secure/parent-secure.component';
+import { NotFoundComponent } from './core-modules/not-found/not-found.component';
+import { SkeletonLoaderComponent } from './shared/skeleton-loader/skeleton-loader.component';
+import { PlaceholderLoaderComponent } from './shared/skeleton-loader/placeholder-loader/placeholder-loader.component';
 
 
 
@@ -48,7 +51,10 @@ const DialogComponents = [
     FooterComponent,
     HeaderComponent,
     LoginComponent,
-    ParentSecureComponent
+    ParentSecureComponent,
+    NotFoundComponent,
+    SkeletonLoaderComponent,
+    PlaceholderLoaderComponent
   ],
 
   imports: [

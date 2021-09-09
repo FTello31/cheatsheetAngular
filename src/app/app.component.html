@@ -7,4 +7,7 @@
 -->
 
 
-<router-outlet></router-outlet> <!-- login -->
+<router-outlet>
+  <!-- <span class="loader" ></span> -->
+  <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+</router-outlet> <!-- login -->

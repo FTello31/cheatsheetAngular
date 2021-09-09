@@ -1,7 +1,10 @@
 export const MENU = [
   { path: 'home', title: 'Home', icon: 'home', children: null },
   { path: 'tables', title: 'Tables', icon: 'table', children: null },
-  { path: 'dialogs', title: 'Dialogs', icon: 'dialog', children: null }
+  { path: 'dialogs', title: 'Dialogs', icon: 'dialog', children: null },
+  { path: 'poling', title: 'Poling', icon: 'load', children: null },
+  { path: 'i18n', title: 'i18n', icon: 'country', children: null },
+  { path: 'lazyloading', title: 'Lazy Loading', icon: 'loading', children: null }
   // {
   //   path: '#parametrizacion', id: 'parametrizacion', title: 'Parametrización', permisoRequerido: 'mnuParametrizacion', icon: 'fact_check', children: [
   //     { path: 'parametrizacion/cuentas-contables', title: 'Cuentas contables', icon: 'CC' },

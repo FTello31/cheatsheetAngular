@@ -1,7 +1,7 @@
 @import "../../../styles/_variables.sass"
 
 :host ::ng-deep .white > .mat-expansion-indicator:after
-    color: white
+    color: $sidebar-text-color
 
 .logo-img
     width: 100%
@@ -12,7 +12,7 @@
     height: 1px
     left: 15px
     width: calc(100% - 30px)
-    background-color: white
+    background-color: $sidebar-text-color
 
 .sidebar-menu
     flex-direction: row
@@ -25,20 +25,20 @@
     margin-right: 10px
 
 .example-sidenav-container
-    background-color: $sidebar-color
+    background-color: $sidebar-background-color
     position: sticky
 
     .mat-nav-list
 
         ::ng-deep .mat-list-item-content
-            color: white
+            color: $sidebar-text-color
 
         .mat-expansion-panel-header
-            background-color: $sidebar-color
+            background-color: $sidebar-background-color
 
         &-title, .mat-expansion-panel-header-description
-            color: white
+            color: $sidebar-text-color
 
         ::ng-deep .mat-expansion-panel-body
-            background-color: $sidebar-color
-            color: white
+            background-color: $sidebar-background-color
+            color: $sidebar-text-color

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './core-modules/login/login.component';
+import { NotFoundComponent } from './core-modules/not-found/not-found.component';
 import { ParentSecureComponent } from './core-modules/parent-secure/parent-secure.component';
 import { DialogsComponent } from './modules/dialogs/dialogs.component';
 import { HomeComponent } from './modules/home/home.component';
@@ -18,10 +19,18 @@ const routes: Routes = [
       { path: '', redirectTo: '/home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },
       // { path: 'tables', component: TablesComponent },
-      { path: 'tables', loadChildren: () => import('./modules/tables-container/tables.module').then(m => m.TablesModule) },
-      { path: 'dialogs', loadChildren: () => import('./modules/dialogs/dialogs.module').then(m => m.DialogsModule) },
+      {
+        path: 'tables',
+        loadChildren: () => import('./modules/tables-container/tables.module').then(m => m.TablesModule)
+      },
+      {
+        path: 'dialogs',
+        loadChildren: () => import('./modules/dialogs/dialogs.module').then(m => m.DialogsModule)
+      },
     ]
-  }
+  },
+  { path: '**', component: NotFoundComponent }
+
 ];
 
 @NgModule({

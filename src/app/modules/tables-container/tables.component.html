@@ -1,13 +1,30 @@
-<app-table-normal></app-table-normal>
-
-<br>
-<br>
-<br>
-
-<app-table-check></app-table-check>
-
-<br>
-<br>
-<br>
-
-<app-table-row-buttons></app-table-row-buttons>
+<div class="row justify-content-center">
+    <div class="col-10">
+        <main role="main">
+            <article class="page-content dashboard">
+                <div class="row">
+                    <div class="col-12 col-md-6 px-md-4 page-sub-section">
+                        <div class="page-sub-section__header">
+                            <h1 class="h3">Modus Operandi</h1>
+                        </div>
+                        <div class="page-sub-section__info d-flex align-items-center">
+                            <div class="page-sub-section__logo">
+                                <span class="modhyobitto-icon modhyobitto-address"></span>
+                            </div>
+                            <p class="page-sub-section__description">
+                                I met a girl who sang the blues and I asked her for some happy news but she just smiled
+                                and turned away.
+                            </p>
+                        </div>
+                        <ul class="page-sub-section__links">
+                            <li><a routerLink="/tables/normal-table">Normal Table</a></li>
+                            <li><a routerLink="/tables/check-table">Check Table</a></li>
+                            <li><a routerLink="/tables/row-table">Row Table</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+        </main>
+    </div>
+</div>
+<router-outlet></router-outlet>
