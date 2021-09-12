@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { MENU } from './sidebar-routes.config';
 
 @Component({
@@ -7,6 +7,7 @@ import { MENU } from './sidebar-routes.config';
   styleUrls: ['./sidebar.component.sass']
 })
 export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
+
   public color: string;
   public menuItems: object;
   public activeFontColor: string;
