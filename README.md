@@ -70,15 +70,24 @@ npm install bootstrap
 </html>
 
 ## Create modules
+
 ng g c core-modules/footer
+
 ng g c core-modules/header
+
 ng g c core-modules/sidebar
+
 ng g c core-modules/parent-secure
+
 ng g c modules/home
+
 ng g cl model/example
+
 ng g i utilities/interceptors/token
 
+
 ng add @angular/material
+
 ng g m app-material
 
 
